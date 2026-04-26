@@ -2,60 +2,140 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Sobre mí - FreshQC Solutions</title>
-  <meta name="description" content="Conoce a FreshQC Solutions: especialistas en control de calidad e inocuidad para exportación de alimentos, garantizando procesos seguros y eficientes.">
-
-  <!-- Google Fonts -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"></noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre mí — FreshQC Solutions</title>
+  <meta name="description" content="Conoce a la especialista detrás de FreshQC Solutions: experta en control de calidad e inocuidad alimentaria para exportación desde Ecuador.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../img/logo-icon.png">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
-
 <body>
 
-<!-- NAV -->
-<header class="header">
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+
+<header class="header" id="header">
   <div class="container nav">
-    <h1 class="logo">
-      <img src="../img/logo-icon.png" alt="FreshQC" class="logo-img">
+    <a href="../index.html" class="logo" aria-label="FreshQC Solutions — Inicio">
+      <img src="../img/logo-icon.png" alt="" class="logo-img" width="38" height="38">
       <div class="logo-text">
-        <div class="fresh-qc">
-          <span class="fresh">Fresh</span><span class="qc">QC</span>
-        </div>
-        <span class="solutions">Solutions</span>
+        <span class="logo-brand"><span class="fresh">Fresh</span><span class="qc">QC</span></span>
+        <span class="logo-sub">Solutions</span>
       </div>
-    </h1>
-
-    <nav class="menu">
-      <a href="../index.html">Inicio</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="productos.html">Productos</a>
-      <a href="paquetes.html">Paquetes</a>
-      <a href="about.html">Sobre mí</a>
-      <a href="contacto.html">Contacto</a>
+    </a>
+    <nav class="menu" id="menu" aria-label="Navegación principal">
+      <a href="../index.html" class="nav-link">Inicio</a>
+      <a href="../index.html#servicios" class="nav-link">Servicios</a>
+      <a href="../index.html#productos" class="nav-link">Productos</a>
+      <a href="../index.html#paquetes" class="nav-link">Paquetes</a>
+      <a href="../index.html#about" class="nav-link active" aria-current="page">Sobre mí</a>
+      <a href="../index.html#contacto" class="nav-link">Contacto</a>
     </nav>
-
-    <a class="btn whatsapp" href="https://wa.me/59391234567" target="_blank" rel="noopener">WhatsApp</a>
+    <div class="nav-actions">
+      <a class="btn btn-wa" href="https://wa.me/59391234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+        WhatsApp
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<!-- SOBRE MI -->
-<section id="about" class="section container about">
-  <div class="about-grid">
-    <img src="../img/sobre-mi.png" alt="persona">
+<section class="page-hero">
+  <div class="container">
+    <h1>Sobre mí</h1>
+    <p class="page-hero-desc">Tu aliada en control de calidad e inocuidad alimentaria.</p>
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <a href="../index.html">Inicio</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span>Sobre mí</span>
+    </nav>
+  </div>
+</section>
 
-    <div>
-      <h2>Tu aliada en calidad e inocuidad</h2>
-      <p>Especialista en control de calidad con experiencia en exportación y cumplimiento sanitario.</p>
+<section class="subpage-section">
+  <div class="container">
+    <div class="about-standalone reveal">
+      <img src="../img/sobre-mi.png" alt="Especialista en control de calidad FreshQC" loading="lazy" width="600" height="700">
+      <div>
+        <span class="section-label">Sobre mí</span>
+        <h2>Tu aliada en calidad<br>e inocuidad</h2>
+        <p>Especialista en control de calidad con amplia experiencia en exportación y cumplimiento sanitario. Comprometida con el éxito de cada cliente a través de soluciones prácticas y eficientes.</p>
+        <p>Mi enfoque combina el rigor técnico con el acompañamiento personalizado, asegurando que tus productos cumplan con los más altos estándares de calidad e inocuidad para los mercados internacionales.</p>
+        <ul class="feature-list" style="margin-top: 20px;" aria-label="Áreas de especialización">
+          <li>
+            <span class="check-icon" style="background: var(--green-tint); border-color: var(--green-mid);" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="color: var(--text);">Control de calidad para exportación</span>
+          </li>
+          <li>
+            <span class="check-icon" style="background: var(--green-tint); border-color: var(--green-mid);" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="color: var(--text);">Implementación de BPM e inocuidad</span>
+          </li>
+          <li>
+            <span class="check-icon" style="background: var(--green-tint); border-color: var(--green-mid);" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="color: var(--text);">Registro sanitario y cumplimiento normativo</span>
+          </li>
+          <li>
+            <span class="check-icon" style="background: var(--green-tint); border-color: var(--green-mid);" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="color: var(--text);">Desarrollo y formulación de productos alimenticios</span>
+          </li>
+        </ul>
+        <div style="margin-top: 28px;">
+          <a class="btn btn-primary" href="../index.html#contacto">Trabajemos juntos</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<a href="https://wa.me/59391234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+  <span class="wa-pulse" aria-hidden="true"></span>
+</a>
+
 <footer class="footer">
-  <p>© 2026 FreshQC Solutions</p>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo footer-logo" aria-label="FreshQC Solutions">
+        <img src="../img/logo-icon.png" alt="" class="logo-img" width="34" height="34">
+        <div class="logo-text">
+          <span class="logo-brand"><span class="fresh">Fresh</span><span class="qc-w">QC</span></span>
+          <span class="logo-sub-w">Solutions</span>
+        </div>
+      </a>
+      <p>Especialistas en control de calidad y monitoreo para exportación de alimentos desde Ecuador.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <h4>Páginas</h4>
+      <a href="../index.html#servicios">Servicios</a>
+      <a href="../index.html#productos">Productos</a>
+      <a href="../index.html#paquetes">Paquetes</a>
+      <a href="../index.html#about">Sobre mí</a>
+      <a href="../index.html#contacto">Contacto</a>
+    </nav>
+    <address class="footer-contact">
+      <h4>Contacto</h4>
+      <a href="https://wa.me/59391234567" target="_blank" rel="noopener noreferrer">+593 9 123 4567</a>
+      <a href="mailto:info@freshqc.com">info@freshqc.com</a>
+      <span>Ecuador</span>
+    </address>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 FreshQC Solutions · Todos los derechos reservados</p>
+  </div>
 </footer>
+
 <script src="../js/script.js"></script>
 </body>
 </html>

@@ -1,150 +1,153 @@
 'use strict';
 
-// ===== SCROLL SUAVE =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
+/* ─── HEADER: sombra al scroll ─── */
+const header = document.getElementById('header');
+if (header) {
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 48);
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
 
-    const target = document.querySelector(this.getAttribute('href'));
+/* ─── HAMBURGER MENU ─── */
+const hamburger = document.getElementById('hamburger');
+const menu      = document.getElementById('menu');
+const overlay   = document.getElementById('menuOverlay');
 
+function openMenu() {
+  menu.classList.add('open');
+  overlay.classList.add('active');
+  hamburger.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  hamburger.setAttribute('aria-label', 'Cerrar menú de navegación');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  menu.classList.remove('open');
+  overlay.classList.remove('active');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-label', 'Abrir menú de navegación');
+  document.body.style.overflow = '';
+}
+
+if (hamburger && menu && overlay) {
+  hamburger.addEventListener('click', () =>
+    menu.classList.contains('open') ? closeMenu() : openMenu()
+  );
+  overlay.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+  });
+
+  menu.querySelectorAll('.nav-link').forEach(link =>
+    link.addEventListener('click', closeMenu)
+  );
+}
+
+/* ─── SCROLL REVEAL ─── */
+const revealObserver = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.14, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ─── COUNTER ANIMATION ─── */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function animateCounter(el, target, duration) {
+  if (prefersReducedMotion) { el.textContent = target; return; }
+  const start  = performance.now();
+  const update = now => {
+    const p    = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(target * ease);
+    if (p < 1) requestAnimationFrame(update);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el     = e.target;
+      const target = parseInt(el.dataset.target, 10);
+      if (!isNaN(target)) animateCounter(el, target, 1400);
+      counterObserver.unobserve(el);
+    });
+  },
+  { threshold: 0.5 }
+);
+document.querySelectorAll('.stat-num').forEach(el => counterObserver.observe(el));
+
+/* ─── SMOOTH SCROLL for anchor links ─── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id     = a.getAttribute('href').slice(1);
+    const target = id ? document.getElementById(id) : null;
     if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth'
-      });
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
 
-
-// ===== NAVBAR CAMBIO AL SCROLL =====
-const header = document.querySelector('.header');
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
-    header.style.background = "linear-gradient(90deg, #ffffff 0%, #f8fafc 100%)";
-  } else {
-    header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
-    header.style.background = "linear-gradient(90deg, #ffffff 0%, #f8fafc 100%)";
-  }
-});
-
-
-// ===== ANIMACIONES AL HACER SCROLL =====
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, {
-  threshold: 0.2
-});
-
-document.querySelectorAll('.card, .section-title, .about-grid, .product, .form')
-  .forEach(el => {
-    el.classList.add('hidden');
-    observer.observe(el);
-  });
-
-
-// ===== VALIDACIÓN FORMULARIO =====
-const form = document.querySelector('.form');
+/* ─── FORM VALIDATION + SUBMIT ─── */
+const form       = document.getElementById('contactForm');
+const submitBtn  = document.getElementById('submitBtn');
+const formSuccess= document.getElementById('formSuccess');
 
 if (form) {
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const inputs = form.querySelectorAll('input, textarea');
-    let valid = true;
-
-    inputs.forEach(input => {
-      if (input.value.trim() === '') {
-        input.style.border = "1px solid red";
-        valid = false;
-      } else {
-        input.style.border = "1px solid #ccc";
-      }
-    });
-
-    if (valid) {
-      alert("Mensaje enviado correctamente 🚀");
-      form.reset();
-    } else {
-      alert("Por favor completa todos los campos");
-    }
-  });
-}
-
-
-// ===== BOTÓN WHATSAPP =====
-const whatsappBtn = document.querySelector('.whatsapp-float');
-
-if (whatsappBtn) {
-  whatsappBtn.addEventListener('click', () => {
-    const phone = "59391234567"; // CAMBIAR
-    const message = encodeURIComponent("Hola, quiero información sobre sus servicios");
-
-    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-  });
-}
-
-
-// ===== EFECTO HOVER AVANZADO (CARDS) =====
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    card.style.transform = `
-      perspective(1000px)
-      rotateX(${(y - rect.height / 2) / 20}deg)
-      rotateY(${-(x - rect.width / 2) / 20}deg)
-      scale(1.03)
-    `;
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = "rotateX(0) rotateY(0) scale(1)";
-  });
-});
-
-
-// ===== CONTADOR ANIMADO =====
-function animateCounter(el, target) {
-  let count = 0;
-  const speed = target / 100;
-
-  const update = () => {
-    count += speed;
-    if (count < target) {
-      el.innerText = Math.floor(count);
-      requestAnimationFrame(update);
-    } else {
-      el.innerText = target;
-    }
+  const fields = {
+    nombre:  { el: document.getElementById('nombre'),  err: document.getElementById('nombre-error'),  msg: 'Por favor ingresa tu nombre.' },
+    correo:  { el: document.getElementById('correo'),  err: document.getElementById('correo-error'),  msg: 'Por favor ingresa un correo válido.' },
+    mensaje: { el: document.getElementById('mensaje'), err: document.getElementById('mensaje-error'), msg: 'Por favor escribe un mensaje.' },
   };
 
-  update();
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function validateField(key) {
+    const { el, err, msg } = fields[key];
+    const val = el.value.trim();
+    const ok  = key === 'correo' ? emailRe.test(val) : val.length > 0;
+    err.textContent = ok ? '' : msg;
+    el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+    return ok;
+  }
+
+  Object.keys(fields).forEach(key => {
+    fields[key].el.addEventListener('blur', () => validateField(key));
+    fields[key].el.addEventListener('input', () => {
+      if (fields[key].err.textContent) validateField(key);
+    });
+  });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const valid = Object.keys(fields).map(validateField).every(Boolean);
+    if (!valid) {
+      const firstInvalid = Object.values(fields).find(f => f.err.textContent);
+      if (firstInvalid) firstInvalid.el.focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.querySelector('.btn-text').hidden  = true;
+    submitBtn.querySelector('.btn-loading').hidden = false;
+
+    await new Promise(r => setTimeout(r, 1200));
+
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.querySelector('.btn-text').hidden  = false;
+    submitBtn.querySelector('.btn-loading').hidden = true;
+
+    if (formSuccess) {
+      formSuccess.hidden = false;
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      setTimeout(() => { formSuccess.hidden = true; }, 5500);
+    }
+  });
 }
-
-// EJEMPLO USO:
-// animateCounter(document.querySelector('#counter1'), 1200);
-
-
-// ===== APARICIÓN SUAVE =====
-const style = document.createElement('style');
-style.innerHTML = `
-.hidden {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.6s ease;
-}
-
-.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-`;
-document.head.appendChild(style);

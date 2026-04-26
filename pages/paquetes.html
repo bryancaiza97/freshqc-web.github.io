@@ -2,86 +2,155 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Paquetes - FreshQC Solutions</title>
-  <meta name="description" content="Elige el paquete ideal de FreshQC Solutions: Emprendedor, Registro Sanitario o Exportación, con servicios personalizados para tu negocio.">
-
-  <!-- Google Fonts -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"></noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paquetes — FreshQC Solutions</title>
+  <meta name="description" content="Elige el paquete ideal: Emprendedor, Registro Sanitario o Exportación. FreshQC Solutions tiene la solución para tu etapa de crecimiento.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../img/logo-icon.png">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
-
 <body>
 
-<!-- NAV -->
-<header class="header">
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+
+<header class="header" id="header">
   <div class="container nav">
-    <h1 class="logo">
-      <img src="../img/logo-icon.png" alt="FreshQC" class="logo-img">
+    <a href="../index.html" class="logo" aria-label="FreshQC Solutions — Inicio">
+      <img src="../img/logo-icon.png" alt="" class="logo-img" width="38" height="38">
       <div class="logo-text">
-        <div class="fresh-qc">
-          <span class="fresh">Fresh</span><span class="qc">QC</span>
-        </div>
-        <span class="solutions">Solutions</span>
+        <span class="logo-brand"><span class="fresh">Fresh</span><span class="qc">QC</span></span>
+        <span class="logo-sub">Solutions</span>
       </div>
-    </h1>
-
-    <nav class="menu">
-      <a href="../index.html">Inicio</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="productos.html">Productos</a>
-      <a href="paquetes.html">Paquetes</a>
-      <a href="about.html">Sobre mí</a>
-      <a href="contacto.html">Contacto</a>
+    </a>
+    <nav class="menu" id="menu" aria-label="Navegación principal">
+      <a href="../index.html" class="nav-link">Inicio</a>
+      <a href="../index.html#servicios" class="nav-link">Servicios</a>
+      <a href="../index.html#productos" class="nav-link">Productos</a>
+      <a href="../index.html#paquetes" class="nav-link active" aria-current="page">Paquetes</a>
+      <a href="../index.html#about" class="nav-link">Sobre mí</a>
+      <a href="../index.html#contacto" class="nav-link">Contacto</a>
     </nav>
-
-    <a class="btn whatsapp" href="https://wa.me/59391234567" target="_blank" rel="noopener">WhatsApp</a>
+    <div class="nav-actions">
+      <a class="btn btn-wa" href="https://wa.me/59391234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20paquetes" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+        WhatsApp
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<!-- PAQUETES -->
-<section id="paquetes" class="section container">
-  <h2 class="section-title">Elige tu solución</h2>
+<section class="page-hero">
+  <div class="container">
+    <h1>Paquetes</h1>
+    <p class="page-hero-desc">Soluciones diseñadas para cada etapa de tu crecimiento empresarial.</p>
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <a href="../index.html">Inicio</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span>Paquetes</span>
+    </nav>
+  </div>
+</section>
 
-  <div class="grid-3">
-    <div class="card price-card">
-      <h3>Emprendedor</h3>
-      <ul>
-              <li>Tabla Nutricional</li>
-              <li>Etiquetado Nutricional</li>
-              <li>Asesoria Basica</li>
-            </ul>
-      <p>$120 - $180</p>
-    </div>
+<section class="subpage-section packages-section">
+  <div class="container">
+    <div class="packages-grid">
 
-    <div class="card price-card featured">
-      <h3>Registro Sanitario</h3>
-      <ul>
-              <li>Tabla Nutricional</li>
-              <li>Etiquetado Nutricional</li>
-              <li>Trámite de Registro Sanitario</li>
-              <li>Acompañamiento Completo</li>
-            </ul>
-      <p>$250 - $400</p>
-    </div>
+      <div class="pkg-card reveal">
+        <div class="pkg-head">
+          <div class="pkg-icon-wrap" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Emprendedor</h3>
+        </div>
+        <ul class="pkg-features" aria-label="Incluye">
+          <li>Tabla Nutricional</li>
+          <li>Etiquetado Nutricional</li>
+          <li>Asesoría Básica</li>
+        </ul>
+        <p class="pkg-price">$120 – $180</p>
+        <a class="btn btn-outline pkg-btn" href="../index.html#contacto">Solicitar paquete</a>
+      </div>
 
-    <div class="card price-card">
-      <h3>Exportación</h3>
-      <ul>
-              <li>Survey de Frutas</li>
-              <li>Data Logger TempU</li>
-              <li>Informe Tecnico Profesional</li>
-            </ul>
-      <p>$80 - $150</p>
+      <div class="pkg-card pkg-featured reveal">
+        <div class="pkg-badge">Más Popular</div>
+        <div class="pkg-head">
+          <div class="pkg-icon-wrap" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Registro Sanitario</h3>
+        </div>
+        <ul class="pkg-features" aria-label="Incluye">
+          <li>Tabla Nutricional</li>
+          <li>Etiquetado Nutricional</li>
+          <li>Trámite de Registro Sanitario</li>
+          <li>Acompañamiento Completo</li>
+        </ul>
+        <p class="pkg-price">$250 – $400</p>
+        <a class="btn btn-primary pkg-btn" href="../index.html#contacto">Solicitar paquete</a>
+      </div>
+
+      <div class="pkg-card reveal">
+        <div class="pkg-head">
+          <div class="pkg-icon-wrap" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Exportación</h3>
+        </div>
+        <ul class="pkg-features" aria-label="Incluye">
+          <li>Survey de Frutas</li>
+          <li>Data Logger TempU</li>
+          <li>Informe Técnico Profesional</li>
+        </ul>
+        <p class="pkg-price">$80 – $150</p>
+        <a class="btn btn-outline pkg-btn" href="../index.html#contacto">Solicitar paquete</a>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<a href="https://wa.me/59391234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20paquetes" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+  <span class="wa-pulse" aria-hidden="true"></span>
+</a>
+
 <footer class="footer">
-  <p>© 2026 FreshQC Solutions</p>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo footer-logo" aria-label="FreshQC Solutions">
+        <img src="../img/logo-icon.png" alt="" class="logo-img" width="34" height="34">
+        <div class="logo-text">
+          <span class="logo-brand"><span class="fresh">Fresh</span><span class="qc-w">QC</span></span>
+          <span class="logo-sub-w">Solutions</span>
+        </div>
+      </a>
+      <p>Especialistas en control de calidad y monitoreo para exportación de alimentos desde Ecuador.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <h4>Páginas</h4>
+      <a href="../index.html#servicios">Servicios</a>
+      <a href="../index.html#productos">Productos</a>
+      <a href="../index.html#paquetes">Paquetes</a>
+      <a href="../index.html#about">Sobre mí</a>
+      <a href="../index.html#contacto">Contacto</a>
+    </nav>
+    <address class="footer-contact">
+      <h4>Contacto</h4>
+      <a href="https://wa.me/59391234567" target="_blank" rel="noopener noreferrer">+593 9 123 4567</a>
+      <a href="mailto:info@freshqc.com">info@freshqc.com</a>
+      <span>Ecuador</span>
+    </address>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 FreshQC Solutions · Todos los derechos reservados</p>
+  </div>
 </footer>
+
 <script src="../js/script.js"></script>
 </body>
 </html>
